@@ -76,53 +76,68 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-private fun updateModelStatus() {
-    val availability = ModelAvailabilityChecker.check(this)
-    val mode = ModelAvailabilityChecker.bestAvailable(this)
-
-    binding.txtModelStatus.text = when {
-        !availability.pose ->
-            "Mode: Fallback — model pose belum tersedia"
-        mode == VtonMode.FULL_VTON ->
-            "Mode: Full VTON"
-        mode == VtonMode.AI_HUMAN_PARSING ->
-            "Mode: AI Human Parsing"
-        else ->
-            "Mode: Fallback"
+    override fun onResume() {
+        super.onResume()
+        if (::binding.isInitialized) updateModelStatus()
     }
-}
 
-        private fun processFitting() {
+    private fun updateModelStatus() {
+        val availability = ModelAvailabilityChecker.check(this)
+        val mode = ModelAvailabilityChecker.bestAvailable(this)
+
+        binding.txtModelStatus.text = when {
+            !availability.pose ->
+                "Mode: Fallback — model pose belum tersedia. Import model pose terlebih dahulu."
+            mode == VtonMode.FULL_VTON ->
+                "Mode: Full VTON"
+            mode == VtonMode.AI_HUMAN_PARSING ->
+                "Mode: AI Human Parsing"
+            else ->
+                "Mode: Fallback"
+        }
+    }
+
+    private fun processFitting() {
         if (processing) return
-        processing = true
 
         val person = personBitmap
-            ?: return toast("Ambil foto orang terlebih dahulu.")
+        if (person == null) {
+            toast("Ambil foto orang terlebih dahulu.")
+            return
+        }
 
         val cloth = clothBitmap
-            ?: return toast("Pilih foto baju terlebih dahulu.")
+        if (cloth == null) {
+            toast("Pilih foto baju terlebih dahulu.")
+            return
+        }
 
+        processing = true
         binding.progressBar.visibility = View.VISIBLE
         binding.btnSwapBaju.isEnabled = false
 
         lifecycleScope.launch(Dispatchers.Default) {
-            val detector = PoseDetector(this@MainActivity)
-
+            var detector: PoseDetector? = null
             try {
-                val pose = detector.detect(person)
-                val prepared = GarmentPreprocessor.prepare(cloth)
+                detector = PoseDetector(this@MainActivity)
 
+                val pose = detector.detect(person)
+                if (pose.landmarks().isEmpty()) {
+                    throw IllegalStateException(
+                        "Pose tidak terdeteksi. Pastikan seluruh tubuh terlihat dan pencahayaan cukup."
+                    )
+                }
+
+                val prepared = GarmentPreprocessor.prepare(cloth)
                 val requestedMode = ModelAvailabilityChecker.bestAvailable(this@MainActivity)
+
                 val bundle = VtonPipelineFactory.create(
                     context = this@MainActivity,
                     pose = pose,
                     requestedMode = requestedMode
                 )
-                val pipeline = bundle.pipeline
 
-                val result = pipeline.run(
+                val result = bundle.pipeline.run(
                     person = person,
                     garment = prepared.bitmap,
                     garmentSourceMask = prepared.mask,
@@ -140,10 +155,12 @@ private fun updateModelStatus() {
                     binding.progressBar.visibility = View.GONE
                     binding.btnSwapBaju.isEnabled = true
                     processing = false
-                    toast("Gagal: ${e.message ?: "kesalahan tidak diketahui"}")
+                    val message = e.message?.takeIf { it.isNotBlank() }
+                        ?: e.javaClass.simpleName
+                    toast("Gagal: $message")
                 }
             } finally {
-                detector.close()
+                detector?.close()
             }
         }
     }
@@ -178,7 +195,7 @@ private fun updateModelStatus() {
     }
 
     private fun toast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {
@@ -189,4 +206,3 @@ private fun updateModelStatus() {
         super.onDestroy()
     }
 }
-
