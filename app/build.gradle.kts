@@ -70,6 +70,6 @@ dependencies {
     implementation("androidx.camera:camera-view:$cameraxVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-    implementation("com.google.mediapipe:tasks-vision:0.10.27")
+    implementation("com.google.mediapipe:tasks-vision:0.10.29")
     implementation("org.tensorflow:tensorflow-lite:2.17.0")
 }
