@@ -13,6 +13,9 @@ object ActiveModelStore {
             .apply()
     }
 
+    fun getActive(context: Context, type: ModelType): ModelType? =
+        getActiveId(context, type)?.let { type }
+
     fun getActiveId(context: Context, type: ModelType): String? =
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
             .getString(type.name, null)
