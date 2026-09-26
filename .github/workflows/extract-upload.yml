@@ -23,11 +23,10 @@ jobs:
           mkdir -p /tmp/swapbaju
           curl -L --fail --retry 3 -o /tmp/swapbaju.zip "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/SwapBaju-GitHub-GitHub-Upload.zip"
           unzip -o /tmp/swapbaju.zip -d /tmp/swapbaju
-          cp -a /tmp/swapbaju/. .
+          rsync -a --exclude='.github/' /tmp/swapbaju/ .
           rm -rf /tmp/swapbaju /tmp/swapbaju.zip
           rm -f SwapBaju-GitHub-GitHub-Upload.zip
           rm -f UPLOAD_METHOD.md
-          rm -f .github/workflows/extract-upload.yml
 
       - name: Commit extracted project
         run: |
