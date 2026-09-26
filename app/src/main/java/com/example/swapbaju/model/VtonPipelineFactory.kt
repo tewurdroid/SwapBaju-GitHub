@@ -54,7 +54,7 @@ object VtonPipelineFactory {
             parserStatus = "Tidak ada human parsing model aktif; memakai fallback."
         }
 
-        var correspondence: DenseCorrespondenceEngine = PoseCorrespondenceEngine()
+        var correspondence: DenseCorrespondenceEngine = PoseCorrespondenceEngine(pose)
         if (requestedMode == VtonMode.FULL_VTON) {
             val active = ActiveModelStore.getActive(context, ModelType.CORRESPONDENCE)
             val config = CorrespondenceRuntimeConfigStore.load(context)
