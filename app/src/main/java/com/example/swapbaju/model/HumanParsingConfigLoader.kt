@@ -60,7 +60,7 @@ object HumanParsingConfigLoader {
     private fun org.json.JSONArray.toFloatArray(size: Int, fallback: Float): FloatArray {
         val out = FloatArray(size) { fallback }
         for (i in 0 until minOf(length(), size)) {
-            out[i] = optDouble(i, fallback).toFloat()
+            out[i] = optDouble(i, fallback.toDouble()).toFloat()
         }
         return out
     }
