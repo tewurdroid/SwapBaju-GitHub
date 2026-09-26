@@ -14,11 +14,11 @@ object ModelCompatibility {
     ): ModelCompatibilityResult {
 
         if (!model.valid) {
-            return ModelCompatibility(false, model.error ?: "Model tidak valid.")
+            return ModelCompatibilityResult(false, model.error ?: "Model tidak valid.")
         }
 
         if (model.inputShapes.isEmpty()) {
-            return ModelCompatibility(false, "Input tensor tidak ditemukan.")
+            return ModelCompatibilityResult(false, "Input tensor tidak ditemukan.")
         }
 
         if (expectedInputWidth != null && expectedInputHeight != null) {
@@ -29,7 +29,7 @@ object ModelCompatibility {
                     shape.contains(expectedInputHeight)
 
                 if (!matches) {
-                    return ModelCompatibility(
+                    return ModelCompatibilityResult(
                         false,
                         "Ukuran input model tidak cocok."
                     )
@@ -37,7 +37,7 @@ object ModelCompatibility {
             }
         }
 
-        return ModelCompatibility(
+        return ModelCompatibilityResult(
             true,
             "Struktur tensor dasar terbaca."
         )
