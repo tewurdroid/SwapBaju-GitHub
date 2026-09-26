@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Human Parsing — Konfigurasi Model"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Isi berdasarkan dokumentasi model TFLite. Jangan menebak nomor class."
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Width, height, dan jumlah class dapat dibaca otomatis dari tensor. ID class pakaian tidak boleh ditebak; gunakan dokumentasi model."
+            android:textSize="13sp" />
+
+
+        <EditText android:id="@+id/etWidth" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input width, contoh 256" android:inputType="number" />
+        <EditText android:id="@+id/etHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input height, contoh 256" android:inputType="number" />
+        <EditText android:id="@+id/etClasses" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Jumlah output classes, contoh 20" android:inputType="number" />
+        <EditText android:id="@+id/etBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Background class ID" android:inputType="number" />
+        <EditText android:id="@+id/etUpper" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Upper garment class IDs, contoh 5,6,7" />
+        <EditText android:id="@+id/etLower" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Lower garment class IDs, opsional" />
+        <EditText android:id="@+id/etMean" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Mean, contoh 0,0,0" />
+        <EditText android:id="@+id/etStd" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Std, contoh 1,1,1" />
+        <EditText android:id="@+id/etThreshold" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Confidence threshold, contoh 0.5" android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Simpan Konfigurasi" />
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hapus Konfigurasi" />
+
+    </LinearLayout>
+</ScrollView>

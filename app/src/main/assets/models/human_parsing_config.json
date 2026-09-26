@@ -1,0 +1,23 @@
+{
+  "assetName": "models/human_parsing.tflite",
+  "inputWidth": 256,
+  "inputHeight": 256,
+  "mean": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "std": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "outputClasses": 20,
+  "upperGarmentClasses": [],
+  "lowerGarmentClasses": [],
+  "skinClasses": [],
+  "hairClasses": [],
+  "backgroundClass": 0,
+  "confidenceThreshold": 0.5,
+  "_IMPORTANT": "This mapping is intentionally not auto-guessed. Before an imported human-parsing model can become active, replace these values with the model's documented tensor/class contract. The runtime now loads the active imported TFLite file from private storage."
+}

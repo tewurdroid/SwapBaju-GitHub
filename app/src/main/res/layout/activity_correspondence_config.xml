@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Dense Correspondence — Konfigurasi" android:textSize="22sp" android:textStyle="bold"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Kontrak adapter: person + garment RGB [1,H,W,3], output x/y/confidence 3-channel. Sesuaikan dengan dokumentasi model."/>
+        <EditText android:id="@+id/etWidth" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input width" android:inputType="number"/>
+        <EditText android:id="@+id/etHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input height" android:inputType="number"/>
+        <EditText android:id="@+id/etOutWidth" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Output width" android:inputType="number"/>
+        <EditText android:id="@+id/etOutHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Output height" android:inputType="number"/>
+        <EditText android:id="@+id/etInputMin" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input min, contoh 0"/>
+        <EditText android:id="@+id/etInputMax" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Input max, contoh 1"/>
+        <EditText android:id="@+id/etXMin" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="X min"/>
+        <EditText android:id="@+id/etXMax" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="X max"/>
+        <EditText android:id="@+id/etYMin" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Y min"/>
+        <EditText android:id="@+id/etYMax" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Y max"/>
+        <EditText android:id="@+id/etCMin" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Confidence min"/>
+        <EditText android:id="@+id/etCMax" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Confidence max"/>
+        <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Simpan"/>
+        <Button android:id="@+id/btnClear" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Hapus"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-feature android:name="android.hardware.camera.any" android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <application
+        android:allowBackup="true"
+        android:label="Swap Baju Offline"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SwapBaju">
+        <activity android:name=".CameraActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ModelDiagnosticsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ModelImportActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+            <activity android:name=".HumanParsingConfigActivity" />
+        <activity android:name=".HumanParsingSetupActivity" />
+        <activity android:name=".CorrespondenceConfigActivity" />
+        <activity android:name=".RefinementConfigActivity" />
+        <activity android:name=".VtonReadinessActivity" />
+        <activity android:name=".model.PoseModelImportActivity" />
+    </application>
+</manifest>

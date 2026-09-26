@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MODEL DIAGNOSTICS"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/txtModelReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"/>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnRefreshModels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PERIKSA ULANG MODEL"/>
+
+        <Button
+            android:id="@+id/btnHumanParsingConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konfigurasi Human Parsing" />
+
+        <Button
+            android:id="@+id/btnHumanParsingSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Periksa & Siapkan Human Parsing" />
+
+        <Button
+            android:id="@+id/btnRefinementConfig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konfigurasi Image Refinement" />
+
+        <Button
+            android:id="@+id/btnVtonReadiness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Periksa Kesiapan VTON" />
+
+    <Button
+        android:id="@+id/btnPoseModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pasang Model Pose" />
+</LinearLayout>

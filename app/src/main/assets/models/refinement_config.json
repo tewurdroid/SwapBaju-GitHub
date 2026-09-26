@@ -1,0 +1,15 @@
+{
+  "assetName": "models/vton_refiner.tflite",
+  "inputWidth": 256,
+  "inputHeight": 256,
+  "outputChannels": 3,
+  "inputRange": [
+    0.0,
+    1.0
+  ],
+  "outputRange": [
+    0.0,
+    1.0
+  ],
+  "_IMPORTANT": "Replace with the selected model's documented tensor contract before enabling."
+}
