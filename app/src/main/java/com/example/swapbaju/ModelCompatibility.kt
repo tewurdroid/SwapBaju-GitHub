@@ -1,6 +1,6 @@
 package com.example.swapbaju
 
-data class ModelCompatibility(
+data class ModelCompatibilityResult(
     val compatible: Boolean,
     val reason: String
 )
