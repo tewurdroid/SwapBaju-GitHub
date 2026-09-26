@@ -41,7 +41,7 @@
             android:id="@+id/btnHumanParsingSetup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Periksa & Siapkan Human Parsing" />
+            android:text="Periksa &amp; Siapkan Human Parsing" />
 
         <Button
             android:id="@+id/btnRefinementConfig"
