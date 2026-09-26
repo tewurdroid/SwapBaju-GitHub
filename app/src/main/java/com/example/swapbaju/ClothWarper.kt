@@ -3,7 +3,6 @@ package com.example.swapbaju
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker.PoseLandmark
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 import kotlin.math.abs
 
@@ -26,10 +25,10 @@ object ClothWarper {
 
         val lm = pose.landmarks()[0]
 
-        val ls = lm[PoseLandmark.LEFT_SHOULDER]
-        val rs = lm[PoseLandmark.RIGHT_SHOULDER]
-        val lh = lm[PoseLandmark.LEFT_HIP]
-        val rh = lm[PoseLandmark.RIGHT_HIP]
+        val ls = lm[11]
+        val rs = lm[12]
+        val lh = lm[23]
+        val rh = lm[24]
 
         val leftX = ls.x().coerceIn(0f, 1f) * person.width
         val rightX = rs.x().coerceIn(0f, 1f) * person.width
