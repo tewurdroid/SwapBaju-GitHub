@@ -3,6 +3,7 @@ package com.example.swapbaju.model
 
 import com.example.swapbaju.*
 import android.content.Context
+import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 
 object VtonPipelineFactory {
 
@@ -12,11 +13,10 @@ object VtonPipelineFactory {
         val status: String
     )
 
-    fun create(context: Context): BuildResult {
+    fun create(context: Context, pose: PoseLandmarkerResult, requestedMode: VtonMode = VtonModeResolver.resolve(context).mode): BuildResult {
         val resolvedMode = VtonModeResolver.resolve(context)
-        val requestedMode = resolvedMode.mode
 
-        var parser: HumanParser = PoseHumanParser()
+        var parser: HumanParser = PoseHumanParser(pose)
         var parserStatus = "Fallback pose parser aktif."
 
         val activeHuman = ActiveModelStore.getActive(context, ModelType.HUMAN_PARSING)
