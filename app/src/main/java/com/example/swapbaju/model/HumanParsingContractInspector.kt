@@ -1,5 +1,7 @@
 package com.example.swapbaju.model
 
+
+import com.example.swapbaju.*
 import org.tensorflow.lite.Interpreter
 import java.io.File
 
