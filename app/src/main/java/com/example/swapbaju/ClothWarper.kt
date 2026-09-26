@@ -3,7 +3,7 @@ package com.example.swapbaju
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmark
+import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker.PoseLandmark
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 import kotlin.math.abs
 
