@@ -49,7 +49,7 @@ object VtonModeResolver {
                 ?: return false
             val config = HumanParsingRuntimeConfigStore.load(context)
                 ?: return false
-            val resolved = ImportedModelResolver.resolve(context, active)
+            val resolved = ImportedModelResolver.resolve(context, active) ?: return false
             FileTfliteHumanParser(
                 resolved.localFile,
                 config.toModelConfig(resolved.metadata.displayName)
@@ -63,7 +63,7 @@ object VtonModeResolver {
                 ?: return false
             val config = CorrespondenceRuntimeConfigStore.load(context)
                 ?: return false
-            val resolved = ImportedModelResolver.resolve(context, active)
+            val resolved = ImportedModelResolver.resolve(context, active) ?: return false
             FileTfliteCorrespondenceEngine(resolved.localFile, config).also { it.close() }
             true
         }.getOrDefault(false)
@@ -74,7 +74,7 @@ object VtonModeResolver {
                 ?: return false
             val config = RefinementRuntimeConfigStore.load(context)
                 ?: return false
-            val resolved = ImportedModelResolver.resolve(context, active)
+            val resolved = ImportedModelResolver.resolve(context, active) ?: return false
             FileTfliteImageRefiner(resolved.localFile, config).also { it.close() }
             true
         }.getOrDefault(false)
