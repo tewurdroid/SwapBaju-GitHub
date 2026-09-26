@@ -11,7 +11,7 @@ object ModelCompatibility {
         model: ImportedModel,
         expectedInputWidth: Int? = null,
         expectedInputHeight: Int? = null
-    ): ModelCompatibility {
+    ): ModelCompatibilityResult {
 
         if (!model.valid) {
             return ModelCompatibility(false, model.error ?: "Model tidak valid.")
