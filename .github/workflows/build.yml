@@ -21,6 +21,12 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Download offline pose model
+        run: |
+          mkdir -p app/src/main/assets
+          curl -L --fail --retry 3 -o app/src/main/assets/pose_landmarker_full.task             "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task"
+          test -s app/src/main/assets/pose_landmarker_full.task
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
