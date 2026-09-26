@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
-import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker.PoseLandmark
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 import kotlin.math.max
 
@@ -31,10 +30,10 @@ object OcclusionMask {
         }
 
         val torso = Path().apply {
-            moveTo(x(PoseLandmark.LEFT_SHOULDER), y(PoseLandmark.LEFT_SHOULDER))
-            lineTo(x(PoseLandmark.RIGHT_SHOULDER), y(PoseLandmark.RIGHT_SHOULDER))
-            lineTo(x(PoseLandmark.RIGHT_HIP), y(PoseLandmark.RIGHT_HIP))
-            lineTo(x(PoseLandmark.LEFT_HIP), y(PoseLandmark.LEFT_HIP))
+            moveTo(x(11), y(11))
+            lineTo(x(12), y(12))
+            lineTo(x(24), y(24))
+            lineTo(x(23), y(23))
             close()
         }
         canvas.drawPath(torso, allow)
@@ -50,14 +49,14 @@ object OcclusionMask {
             canvas.drawLine(x(a), y(a), x(b), y(b), block)
         }
 
-        limb(PoseLandmark.LEFT_SHOULDER, PoseLandmark.LEFT_ELBOW)
-        limb(PoseLandmark.LEFT_ELBOW, PoseLandmark.LEFT_WRIST)
-        limb(PoseLandmark.RIGHT_SHOULDER, PoseLandmark.RIGHT_ELBOW)
-        limb(PoseLandmark.RIGHT_ELBOW, PoseLandmark.RIGHT_WRIST)
+        limb(11, 13)
+        limb(13, 15)
+        limb(12, 14)
+        limb(14, 16)
 
         // Small neck exclusion corridor.
         block.strokeWidth = max(14f, person.width * 0.045f)
-        limb(PoseLandmark.LEFT_SHOULDER, PoseLandmark.RIGHT_SHOULDER)
+        limb(11, 12)
 
         return mask
     }
