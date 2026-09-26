@@ -19,6 +19,11 @@ android {
         viewBinding = true
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
     signingConfigs {
         create("release") {
             val keystorePath = System.getenv("ANDROID_KEYSTORE_PATH")
@@ -54,6 +59,10 @@ android {
             }
         }
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
