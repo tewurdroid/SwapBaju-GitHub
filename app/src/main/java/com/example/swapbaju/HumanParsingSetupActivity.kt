@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swapbaju.databinding.ActivityHumanParsingSetupBinding
-import com.example.swapbaju.model.ActiveModelStore
+import com.example.swapbaju.ActiveModelStore
 import com.example.swapbaju.model.HumanParsingContractInspector
-import com.example.swapbaju.model.ImportedModelResolver
-import com.example.swapbaju.model.ModelType
+import com.example.swapbaju.ImportedModelResolver
+import com.example.swapbaju.ModelType
 
 class HumanParsingSetupActivity : AppCompatActivity() {
 
