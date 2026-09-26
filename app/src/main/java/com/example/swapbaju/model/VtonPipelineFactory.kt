@@ -65,7 +65,7 @@ object VtonPipelineFactory {
                 if (resolved != null) {
                     correspondence = runCatching {
                         FileTfliteCorrespondenceEngine(resolved.localFile, config)
-                    }.getOrElse { PoseCorrespondenceEngine() }
+                    }.getOrElse { PoseCorrespondenceEngine(pose) }
                 }
             }
         }
