@@ -18,21 +18,43 @@ android {
     buildFeatures {
         viewBinding = true
     }
-}
 
-buildTypes {
+    signingConfigs {
+        create("release") {
+            val keystorePath = System.getenv("ANDROID_KEYSTORE_PATH")
+            val keystorePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            val keyAlias = System.getenv("ANDROID_KEY_ALIAS")
+            val keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+
+            if (!keystorePath.isNullOrBlank() &&
+                !keystorePassword.isNullOrBlank() &&
+                !keyAlias.isNullOrBlank() &&
+                !keyPassword.isNullOrBlank()
+            ) {
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            }
+        }
+    }
+
+    buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+
             val hasSigningEnv =
                 !System.getenv("ANDROID_KEYSTORE_PATH").isNullOrBlank() &&
                 !System.getenv("ANDROID_KEYSTORE_PASSWORD").isNullOrBlank() &&
                 !System.getenv("ANDROID_KEY_ALIAS").isNullOrBlank() &&
                 !System.getenv("ANDROID_KEY_PASSWORD").isNullOrBlank()
+
             if (hasSigningEnv) {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
     }
+}
 
 dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
