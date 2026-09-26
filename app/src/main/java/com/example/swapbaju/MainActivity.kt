@@ -180,13 +180,13 @@ private fun updateModelStatus() {
     private fun toast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onDestroy() {
+        personBitmap?.let { if (!it.isRecycled) it.recycle() }
+        clothBitmap?.let { if (!it.isRecycled) it.recycle() }
+        personBitmap = null
+        clothBitmap = null
+        super.onDestroy()
+    }
 }
 
-
-override fun onDestroy() {
-    personBitmap?.let { if (!it.isRecycled) it.recycle() }
-    clothBitmap?.let { if (!it.isRecycled) it.recycle() }
-    personBitmap = null
-    clothBitmap = null
-    super.onDestroy()
-}
