@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
-import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker.PoseLandmark
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 
 /**
@@ -34,23 +33,23 @@ class HeuristicSegmentationEngine(
         val path = Path()
 
         path.moveTo(
-            px(PoseLandmark.LEFT_SHOULDER),
-            py(PoseLandmark.LEFT_SHOULDER)
+            px(11),
+            py(11)
         )
 
         path.lineTo(
-            px(PoseLandmark.RIGHT_SHOULDER),
-            py(PoseLandmark.RIGHT_SHOULDER)
+            px(12),
+            py(12)
         )
 
         path.lineTo(
-            px(PoseLandmark.RIGHT_HIP),
-            py(PoseLandmark.RIGHT_HIP)
+            px(24),
+            py(24)
         )
 
         path.lineTo(
-            px(PoseLandmark.LEFT_HIP),
-            py(PoseLandmark.LEFT_HIP)
+            px(23),
+            py(23)
         )
 
         path.close()
