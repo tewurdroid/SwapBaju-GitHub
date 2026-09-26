@@ -3,6 +3,7 @@ package com.example.swapbaju
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swapbaju.databinding.ActivityModelDiagnosticsBinding
+import com.example.swapbaju.model.PoseRuntimeStatusChecker
 
 class ModelDiagnosticsActivity : AppCompatActivity() {
 
